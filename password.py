@@ -22,3 +22,6 @@ class Password:
     def delWebsite(self):
         del self.website
     
+    def printData(self):
+        print(self.password)
+        print(self.website)
