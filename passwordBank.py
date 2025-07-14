@@ -47,6 +47,7 @@ class HashMap:
                 break
         if keyFound:
             bucket.pop(x)
+            return None
         else:
             return "No password found"
 
