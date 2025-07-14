@@ -1,47 +1,54 @@
-from password import Password
+class HashMap:
 
-#Node class for a linked list
-class Node:
+    def __init__(self, size):
+        self.size = size
+        self.hashMap = self.makeBucket()
+
+    def makeBucket(self):
+        bucket = [[] for x in range(self.size)]
+        return bucket
     
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-#returns data of node
-    def getData(self):
-        return self.data
-
-class LinkedList:
-
-    def __init__(self):
-        self.head = None
-
-#inserts new node at the head of the list
-    def insertFromHead(self, data):
-        newNode = Node(data)
-        if self.head is None:
-            self.head = newNode
-            return
+    def setValue(self, key, value):
+        hashKey = hash(key) % self.size
+        bucket = self.hashMap[hashKey]
+        keyFound = False
+        for x, record in enumerate(bucket):
+            recordKey = record
+            if recordKey == key:
+                keyFound = True
+                break
+        if keyFound:
+            bucket[x] = (key, value)
         else:
-            newNode.next = self.head
-            self.head = newNode
-    
-#insterts new node at the tail of the list
-    def insertFromTail(self, data):
-        newNode = Node(data)
-        if self.head is None:
-            self.head = newNode
-            return
-        index = self.head
-        while(index.next):
-            index = index.next
-        index.next = newNode
+            bucket.append((key, value))
+            
+    def getValue(self, key):
+        hashKey = hash(key) % self.size
+        bucket = self.hashMap[hashKey]
+        keyFound = False
+        for x, record in enumerate(bucket):
+            recordKey = record
+            if recordKey == key:
+                keyFound = True
+                break
+        if keyFound:
+            return recordKey
+        else:
+            return "No password found"
+        
+    def removeValue(self, key):
+        hashKey = hash(key) % self.size
+        bucket = self.hashMap[hashKey]
+        keyFound = False
+        for x, record in enumerate(bucket):
+            recordKey = record
+            if recordKey == key:
+                keyFound = True
+                break
+        if keyFound:
+            bucket.pop(x)
+        else:
+            return "No password found"
 
-#Returns each element of the list starting at the head
-    def returnList(self):
-        if self.head is None:
-            return
-        index = self.head
-        while(index.next):
-                index.data
-                index = index.next
+    def __str__(self):
+        return "".join(str(item) for item in self.hashMap)
