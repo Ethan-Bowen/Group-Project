@@ -1,6 +1,6 @@
 class Password:
 
-    def __init__(self, password, website):
+    def __init__(self, website, password):
         self.password = password
         self.website = website
     
