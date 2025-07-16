@@ -51,11 +51,13 @@ class HashMap:
                 break
         if keyFound:
             bucket.pop(x)
+            return None
         else:
             return "No password found"
 
     def __str__(self):
         return "".join(str(item) for item in self.hashMap)
+
     
     #Will read saved password information from a file and save it to the hash map
     def readSavedPasswords(self, file):
