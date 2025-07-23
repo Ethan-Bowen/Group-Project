@@ -1,64 +1,36 @@
 class HashMap:
 
-    def __init__(self, size):
-        self.size = size
-        self.hashMap = self.makeBucket()
-
-    #sets the size of the hash map
-    def makeBucket(self):
-        bucket = [[] for x in range(self.size)]
-        return bucket
+    def __init__(self):
+        self.map = {}
     
     #Enters a new password into the hash map given the affiliated website and the password
     def setValue(self, key, value):
-        hashKey = hash(key) % self.size
-        bucket = self.hashMap[hashKey]
-        keyFound = False
-        for x, record in enumerate(bucket):
-            recordKey = record
-            if recordKey == key:
-                keyFound = True
-                break
-        if keyFound:
-            bucket[x] = (key, value)
-        else:
-            bucket.append((key, value))
+        self.map.update({key : value})
             
     #Returns the value of the password given the website title
     def getValue(self, key):
-        hashKey = hash(key) % self.size
-        bucket = self.hashMap[hashKey]
         keyFound = False
-        for x, record in enumerate(bucket):
-            recordKey = record
-            if recordKey == key:
+        for x in self.map:
+            if x == key:
                 keyFound = True
                 break
-        if keyFound:
-            return recordKey
+        if keyFound == True:
+            return self.map.get(key)
         else:
-            return "No password found"
-        
+            return "Password not found"
+            
     #Removes a password given the website title
     def removeValue(self, key):
-        hashKey = hash(key) % self.size
-        bucket = self.hashMap[hashKey]
         keyFound = False
-        for x, record in enumerate(bucket):
-            recordKey = record
-            if recordKey == key:
+        for x in self.map:
+            if x == key:
                 keyFound = True
                 break
-        if keyFound:
-            bucket.pop(x)
-            return None
+        if keyFound == True:
+            self.map.pop(key)
         else:
-            return "No password found"
-
-    def __str__(self):
-        return "".join(str(item) for item in self.hashMap)
-
-    
+            return "Password not found"
+  
     #Will read saved password information from a file and save it to the hash map
     def readSavedPasswords(self, file):
         for line in file:
@@ -71,7 +43,8 @@ class HashMap:
                 counter += 1
             self.setValue(website, password)
         
-    #TODO
-    # def savePasswords(self, file):
-        
+    #Saves the current contents of the hashmap to a file
+    def savePasswords(self, file):
+        for key in self.map:
+            file.write(key + " "  + self.map.get(key) + "\n")
 

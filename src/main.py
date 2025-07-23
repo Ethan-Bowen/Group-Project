@@ -29,15 +29,27 @@ import os
 # print()
 # print(hashMap)
 
+# map = HashMap()
+# map.setValue("website", "password")
+# print(map.map)
+# map.setValue("hello", "world")
+# print(map.map)
+# map.setValue("website", "1234")
+# print(map.map)
+# print(map.getValue("hello"))
+# map.removeValue("hello")
+# print(map.map)
+# print()
+# os.chdir("Username")
+# file = open("passwords.txt")
+# map.readSavedPasswords(file)
+# print(map.map)
+# fileTwo = open("passwordTwo.txt", "wt")
+# map.savePasswords(fileTwo)
+# file.close()
+# fileTwo.close()
+
 def main():
     
     return
 
-user = User("Username", "12345")
-user.createUser(user.username, user.password)
-hash = HashMap(10)
-os.chdir(user.username)
-file = open("passwords.txt")
-hash.readSavedPasswords(file)
-file.close()
-print(hash)
