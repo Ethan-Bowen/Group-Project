@@ -7,8 +7,8 @@ import os
 # passwd = Password(12345, "Hello World")
 # print(passwd.password, " ", passwd.website)
 
-# user = User("BadPassword123")
-# print(user.userPassword)
+# user = User("Username", "BadPassword123")
+# user.createUser()
 
 # hashMap = HashMap(10)
 # hashMap.setValue('hello', 'world')

@@ -6,13 +6,15 @@ class User:
     def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.passwordBank = HashMap(10)
-        # self.passwordFile = open("passwords.txt")
+        self.passwordBank = HashMap()
+        self.file = None
 
-    def createUser(self, username, password):
-        user = User(username, password)
-        if os.path.isdir(username):
+    def createUser(self):
+        user = User(self.username, self.password)
+        if os.path.isdir(self.username):
             return "This user already exists!"
         else:
-            os.mkdir(username)
-            
+            os.mkdir(self.username)
+            os.chdir(self.username)
+            self.file = open("passwords.txt", "x")
+            self.file.close()
