@@ -9,6 +9,7 @@ class User:
         self.passwordBank = HashMap()
         self.file = None
 
+    #Used to create a folder and txt file for a new user
     def createUser(self):
         user = User(self.username, self.password)
         if os.path.isdir(self.username):
