@@ -17,5 +17,5 @@ class User:
         else:
             os.mkdir(self.username)
             os.chdir(self.username)
-            self.file = open("passwords.txt", "x")
-            self.file.close()
+            with open("passwords.txt", "x") as self.file:
+                return()

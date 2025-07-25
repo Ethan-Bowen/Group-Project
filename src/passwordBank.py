@@ -2,7 +2,7 @@ class HashMap:
 
     def __init__(self):
         self.map = {}
-    
+
     #Enters a new password into the hash map given the affiliated website and the password
     def setValue(self, key, value):
         self.map.update({key : value})
@@ -30,21 +30,23 @@ class HashMap:
             self.map.pop(key)
         else:
             return "Password not found"
-  
+
     #Will read saved password information from a file and save it to the hash map
-    def readSavedPasswords(self, file):
-        for line in file:
-            counter = 0
-            for word in line.split():
-                if (counter % 2) == 0:
-                    website = word
-                else: 
-                    password = word
-                counter += 1
-            self.setValue(website, password)
-        
+    def readSavedPasswords(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                counter = 0
+                for word in line.split():
+                    if (counter % 2) == 0:
+                        website = word
+                    else: 
+                        password = word
+                    counter += 1
+                self.setValue(website, password)
+
     #Saves the current contents of the hashmap to a file
-    def savePasswords(self, file):
+    def savePasswords(self, filename):
         for key in self.map:
-            file.write(key + " "  + self.map.get(key) + "\n")
+            with open(filename, "w") as file:
+                file.write(key + " "  + self.map.get(key) + "\n")
 
