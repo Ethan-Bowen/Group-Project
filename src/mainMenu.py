@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from addPassword import passwordWindow
 
 #This creates the main application window
 def mainMenu():
@@ -8,6 +9,9 @@ def mainMenu():
     def placeholder_function():
         """A placeholder function for menu options."""
         messagebox.showinfo("Info", "This feature is not implemented yet!")
+
+    def openPassWindow():
+        newWindow1 = passwordWindow()
 
     def exit_application():
         """Exit the application."""
@@ -25,8 +29,8 @@ def mainMenu():
     button_frame.pack(pady=10)
 
     #This adds buttons for different functions
-    btn_function1 = tk.Button(button_frame, text="New Password", width=20, command=placeholder_function)
-    btn_function1.pack(pady=5)
+    btn_function2 = tk.Button(button_frame, text="Add Password", width=20, command=openPassWindow)
+    btn_function2.pack(pady=5)
 
     btn_function2 = tk.Button(button_frame, text="Password Manager", width=20, command=placeholder_function)
     btn_function2.pack(pady=5)
