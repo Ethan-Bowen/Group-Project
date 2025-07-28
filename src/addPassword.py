@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+from passwordBank import HashMap
+import os
 
 class passwordWindow:
     def __init__(self):
@@ -29,13 +31,17 @@ class passwordWindow:
 
         # This simulates saving the inputs (like in the Login code, replace this and the saveInfo definition with the save to file logic
         # when it gets done)
-        self.saveInfo(website, password)
+        
+        hashMap = HashMap()
+        hashMap.readSavedPasswords("passwords.txt")
+        hashMap.setValue(website, password)
+        hashMap.savePasswords("passwords.txt")
         messagebox.showinfo("Success", f"New website and Password saved")
 
 
-    def saveInfo(self, website, password):
-        # This is a placeholder for the saving logic
-        print(f"Saving use case: {website}, Password: {password}")
+    # def saveInfo(self, website, password):
+    #     # This is a placeholder for the saving logic
+    #     print(f"Saving use case: {website}, Password: {password}")
 
 if __name__ == "__main__":
     root = tk.Tk()

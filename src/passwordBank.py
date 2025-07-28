@@ -34,6 +34,8 @@ class HashMap:
     #Will read saved password information from a file and save it to the hash map
     def readSavedPasswords(self, filename):
         with open(filename, "r") as file:
+            password = None
+            website = None
             for line in file:
                 counter = 0
                 for word in line.split():
