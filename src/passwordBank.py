@@ -44,7 +44,7 @@ class HashMap:
                     counter += 1
                 self.setValue(website, password)
 
-    #Saves the current contents of the hashmap to a file
+    #Saves the current contents of the hash map to a file
     def savePasswords(self, filename):
         for key in self.map:
             with open(filename, "w") as file:

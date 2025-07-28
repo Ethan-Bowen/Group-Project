@@ -2,6 +2,7 @@ from password import Password
 from passwordBank import HashMap
 from user import User
 import os
+import cryption
 # import mainMenu
 
 # passwd = Password(12345, "Hello World")
@@ -52,4 +53,3 @@ import os
 def main():
     
     return
-

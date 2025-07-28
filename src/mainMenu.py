@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+import os
+import cryption
 
 #This creates the main application window
 def mainMenu():
@@ -11,6 +13,10 @@ def mainMenu():
 
     def exit_application():
         """Exit the application."""
+        with open("key.key", "rb") as keyFile:
+            key = keyFile.read()
+        cryption.encrypt("passwords.txt", key)
+        os.remove("key.key")
         if messagebox.askyesno("Exit", "Are you sure you want to exit?"):
             mainRoot.destroy()
 

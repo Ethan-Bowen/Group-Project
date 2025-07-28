@@ -1,5 +1,6 @@
 import os
 from passwordBank import HashMap
+import cryption
 
 class User:
 
@@ -7,15 +8,17 @@ class User:
         self.username = username
         self.password = password
         self.passwordBank = HashMap()
-        self.file = None
+        key = None
 
     #Used to create a folder and txt file for a new user
-    def createUser(self):
-        user = User(self.username, self.password)
-        if os.path.isdir(self.username):
+    @staticmethod
+    def createUser(username, password):
+        if os.path.isdir(password):
             return "This user already exists!"
         else:
-            os.mkdir(self.username)
-            os.chdir(self.username)
-            with open("passwords.txt", "x") as self.file:
+            os.mkdir(username)
+            os.chdir(username)
+            with open("passwords.txt", "x"):
+                cryption.genarateKey(password=password, saltSize=32, loadSalt=False, saveSalt=True)
                 return()
+            
