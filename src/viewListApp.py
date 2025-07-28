@@ -10,7 +10,8 @@ class viewPasswords:
 
         #The loadList function should go here. Be sure to include an except
         #function if the file isn't found
-    def loadList(self, listbox=None):
+    def loadList(self):
+        listbox = tk.Listbox(root, height=15, width=50)
         hashMap = HashMap()
         try:
             hashMap.readSavedPasswords("passwords.txt")
@@ -23,7 +24,6 @@ class viewPasswords:
             counter += 1
 
         # This is the Listbox widget
-        listbox = tk.Listbox(root, height=15, width=50)
         listbox.pack(pady=10)
         
 
