@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+from addPassword import passwordWindow
+from viewListApp import viewPasswords
 import os
 import cryption
 
@@ -11,7 +13,13 @@ def mainMenu():
         """A placeholder function for menu options."""
         messagebox.showinfo("Info", "This feature is not implemented yet!")
 
-    def exit_application():
+    def openPassWindow():
+        newWindow1 = passwordWindow()
+
+    def openPassView():
+        newWindow2 = viewPasswords()
+
+    def exitApplication():
         """Exit the application."""
         with open("key.key", "rb") as keyFile:
             key = keyFile.read()
@@ -31,14 +39,14 @@ def mainMenu():
     button_frame.pack(pady=10)
 
     #This adds buttons for different functions
-    btn_function1 = tk.Button(button_frame, text="New Password", width=20, command=placeholder_function)
-    btn_function1.pack(pady=5)
+    btn_function2 = tk.Button(button_frame, text="Add Password", width=20, command=openPassWindow)
+    btn_function2.pack(pady=5)
 
-    btn_function2 = tk.Button(button_frame, text="Password Manager", width=20, command=placeholder_function)
+    btn_function2 = tk.Button(button_frame, text="Password Manager", width=20, command=openPassView)
     btn_function2.pack(pady=5)
 
     #This adds an Exit button
-    btn_exit = tk.Button(button_frame, text="Exit", width=20, command=exit_application)
+    btn_exit = tk.Button(button_frame, text="Exit", width=20, command=exitApplication)
     btn_exit.pack(pady=5)
 
     #This runs the application
