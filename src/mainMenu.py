@@ -25,7 +25,8 @@ def mainMenu():
             key = keyFile.read()
         cryption.encrypt("passwords.txt", key)
         if messagebox.askyesno("Exit", "Are you sure you want to exit?"):
-            os.remove("key.key")
+            # if os.getcwd != "Group-Project":
+            #     os.chdir("..")
             mainRoot.destroy()
 
 

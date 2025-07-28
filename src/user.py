@@ -18,7 +18,9 @@ class User:
         else:
             os.mkdir(username)
             os.chdir(username)
+            key = cryption.genarateKey(password=password, saltSize=32, loadSalt=False, saveSalt=True)
+            with open("key.key", "wb") as keyFile:
+                keyFile.write(key)
             with open("passwords.txt", "x"):
-                cryption.genarateKey(password=password, saltSize=32, loadSalt=False, saveSalt=True)
                 return()
             

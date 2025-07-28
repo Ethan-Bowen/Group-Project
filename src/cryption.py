@@ -53,9 +53,6 @@ def decrypt(filename, key):
     f = Fernet(key)
     with open(filename, "rb") as file:
         encryptedData = file.read()
-    try:
-        decryptedData = f.decrypt(encryptedData)
-    except cryptography.fernet.InvalidToken:
-        return ("Invalid password")
+    decryptedData = f.decrypt(encryptedData)
     with open(filename, "wb") as file:
         file.write(decryptedData)

@@ -4,6 +4,7 @@ from mainMenu import mainMenu
 from user import User
 import os
 import cryption
+import cryptography.fernet
 
 class UserCreatorGUI:
     def __init__(self, root):
@@ -34,9 +35,6 @@ class UserCreatorGUI:
             return
         else:
             User.createUser(username=username, password=password)
-            key = cryption.genarateKey(password=password, saltSize=32, loadSalt=True, saveSalt=False)
-            with open("key.key", "wb") as keyFile:
-                keyFile.write(key)
             messagebox.showinfo("Success", f"User '{username}' created successfully!")
             self.openMainWindow()
 
@@ -48,14 +46,19 @@ class UserCreatorGUI:
             messagebox.showerror("Error", "Both fields are required!")
             return
         elif not os.path.isdir(username):
+            print()
+            print(os.getcwd())
             messagebox.showerror("Error", "Invalid Username!")
             return
         else:
             os.chdir(username)
-            key = cryption.genarateKey(password=password, saltSize=32, loadSalt=True, saveSalt=False)
-            with open("key.key", "wb") as keyFile:
-                keyFile.write(key)
-            cryption.decrypt("passwords.txt", key=key)
+            key = cryption.genarateKey(password, loadSalt=True)
+            try:
+                cryption.decrypt("passwords.txt", key)
+            except cryptography.fernet.InvalidToken:
+                messagebox.showerror("Error", "Incorrect Password!")
+                os.chdir("..")
+                return()
             self.openMainWindow()
         
 
@@ -65,9 +68,9 @@ class UserCreatorGUI:
         # messagebox.showinfo("Success", f"User '{username}' created successfully!")
         self.openMainWindow()
 
-    def saveUser(self, username, password):
-        #This is a placeholder for the saving user logic
-        print(f"Saving user: {username}, Password: {password}")
+    # def saveUser(self, username, password):
+    #     #This is a placeholder for the saving user logic
+    #     print(f"Saving user: {username}, Password: {password}")
 
     # This closes the login window and opens the main window, which will be integrated more in the future
     def openMainWindow(self):
