@@ -24,8 +24,8 @@ def mainMenu():
         with open("key.key", "rb") as keyFile:
             key = keyFile.read()
         cryption.encrypt("passwords.txt", key)
-        os.remove("key.key")
         if messagebox.askyesno("Exit", "Are you sure you want to exit?"):
+            os.remove("key.key")
             mainRoot.destroy()
 
 
