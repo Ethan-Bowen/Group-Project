@@ -8,10 +8,6 @@ import cryption
 def mainMenu():
     mainRoot=tk.Tk()
 
-    def placeholder_function():
-        """A placeholder function for menu options."""
-        messagebox.showinfo("Info", "This feature is not implemented yet!")
-
     def openPassWindow():
         newWindow1 = passwordWindow()
 

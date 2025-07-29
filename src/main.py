@@ -3,7 +3,8 @@ from passwordBank import HashMap
 from user import User
 import os
 import cryption
-# import mainMenu
+from login import UserCreatorGUI
+import tkinter as tk
 
 # passwd = Password(12345, "Hello World")
 # print(passwd.password, " ", passwd.website)
@@ -50,7 +51,11 @@ import cryption
 # file.close()
 # fileTwo.close()
 
-def main():
+# def main():
 
-    return
+#     return
 
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = UserCreatorGUI(root)
+    app.root.mainloop()

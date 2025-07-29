@@ -25,6 +25,7 @@ class UserCreatorGUI:
         tk.Button(self.root, text="Create User", command=self.createUser).grid(row=2, column=0, columnspan=2,
                                                                                   pady=20)
         tk.Button(self.root, text="Login", command=self.login).grid(row=3, column=0, columnspan=2, pady=0)
+        
     #The logic for the main function here
     def createUser(self):
         username = self.usernameEntry.get().strip()
