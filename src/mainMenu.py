@@ -26,7 +26,8 @@ def mainMenu():
             cryption.encrypt("passwords.txt", key)
             mainRoot.destroy()
 
-
+    #Runs the exitApplication fn when user closes program
+    mainRoot.protocol("WM_DELETE_WINDOW", exitApplication)
 
     #This creates a label for the main menu
     label = tk.Label(mainRoot, text="Main Menu", font=("Arial", 16))

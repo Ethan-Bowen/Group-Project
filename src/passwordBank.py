@@ -48,7 +48,7 @@ class HashMap:
 
     #Saves the current contents of the hash map to a file
     def savePasswords(self, filename):
-        for key in self.map:
-            with open(filename, "w") as file:
+        with open(filename, "w") as file:
+            for key in self.map:
                 file.write(key + " "  + self.map.get(key) + "\n")
 

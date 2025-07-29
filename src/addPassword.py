@@ -30,9 +30,6 @@ class passwordWindow:
         if not website or not password:
             messagebox.showwarning("Error", "Both fields are required!")
 
-        # This simulates saving the inputs (like in the Login code, replace this and the saveInfo definition with the save to file logic
-        # when it gets done)
-
         hashMap = HashMap()
         hashMap.readSavedPasswords("passwords.txt")
         hashMap.setValue(website, password)
