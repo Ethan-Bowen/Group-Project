@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 from addPassword import passwordWindow
 from viewListApp import viewPasswords
-import os
 import cryption
 
 #This creates the main application window
@@ -21,12 +20,10 @@ def mainMenu():
 
     def exitApplication():
         """Exit the application."""
-        with open("key.key", "rb") as keyFile:
-            key = keyFile.read()
-        cryption.encrypt("passwords.txt", key)
         if messagebox.askyesno("Exit", "Are you sure you want to exit?"):
-            # if os.getcwd != "Group-Project":
-            #     os.chdir("..")
+            with open("key.key", "rb") as keyFile:
+                key = keyFile.read()
+            cryption.encrypt("passwords.txt", key)
             mainRoot.destroy()
 
 
