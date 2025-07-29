@@ -27,7 +27,7 @@ class viewPasswords:
             return()
         for key in hashMap.map:
             self.listbox.insert(tk.END, key + "    " + hashMap.getValue(key))
-        return()
+
 
     #Used for the remove button
     #Removes the saved password in the listbox, the hash map, and the passwords file
