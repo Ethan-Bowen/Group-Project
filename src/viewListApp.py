@@ -32,10 +32,10 @@ class viewPasswords:
     #Used for the remove button
     #Removes the saved password in the listbox, the hash map, and the passwords file
     def remove(self):
-        try:
-            passwordNum = self.listbox.curselection()
-        except tk.TclError:
+        passwordNum = self.listbox.curselection()
+        if not passwordNum:
             messagebox.showerror("Error", "A Password Must be Selected!")
+            return
         password = self.listbox.get(passwordNum)
         split = password.split()
         hashMap = HashMap()
