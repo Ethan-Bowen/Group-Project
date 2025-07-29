@@ -3,7 +3,7 @@ from tkinter import messagebox
 from tkinter import *
 from passwordBank import HashMap
 
-listbox = tk.Listbox()
+listbox = None
 def viewPasswords():
     viewWindow = tk.Toplevel()
     viewWindow.title("View Passwords")
@@ -11,7 +11,7 @@ def viewPasswords():
 
     #Widgets
     listbox = tk.Listbox(viewWindow, width=200, height=100)
-    listbox.grid(row=0, column=0, pady=10, padx=10)
+    listbox.pack(pady=10, padx=10, expand=False)
     
     #Displays the contents of the hash map on the list box
     hashMap = HashMap()
@@ -24,6 +24,3 @@ def viewPasswords():
         listbox.insert(tk.END, key + "    " + hashMap.getValue(key))
     return()
 
-def remove(self):
-    passwords = listbox.curselection()
-    print(passwords)
