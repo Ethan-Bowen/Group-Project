@@ -17,6 +17,7 @@ def mainMenu():
     def exitApplication():
         """Exit the application."""
         if messagebox.askyesno("Exit", "Are you sure you want to exit?"):
+            #Encrypts the password file before closing the program
             with open("key.key", "rb") as keyFile:
                 key = keyFile.read()
             cryption.encrypt("passwords.txt", key)

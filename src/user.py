@@ -4,12 +4,6 @@ import cryption
 
 class User:
 
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-        self.passwordBank = HashMap()
-        key = None
-
     #Used to create a folder and txt file for a new user
     @staticmethod
     def createUser(username, password):

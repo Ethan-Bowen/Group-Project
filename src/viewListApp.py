@@ -11,9 +11,10 @@ class viewPasswords:
         self.viewWindow.title("View Passwords")
         self.viewWindow.geometry("500x300")
 
-        # Widgets
+        #Listbox
         self.listbox = tk.Listbox(self.viewWindow)
         self.listbox.pack(pady=10, padx=10, expand=False)
+        #Button
         button = tk.Button(self.viewWindow, text="Remove Password", command=self.remove)
         button.pack(pady=10)
 
@@ -28,6 +29,8 @@ class viewPasswords:
             self.listbox.insert(tk.END, key + "    " + hashMap.getValue(key))
         return()
 
+    #Used for the remove button
+    #Removes the saved password in the listbox, the hash map, and the passwords file
     def remove(self):
         try:
             passwordNum = self.listbox.curselection()

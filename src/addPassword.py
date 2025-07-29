@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 from passwordBank import HashMap
-import os
-
 
 class passwordWindow:
     def __init__(self):
@@ -26,20 +24,15 @@ class passwordWindow:
     def submit(self):
         website = self.websiteEntry.get()
         password = self.passwordEntry.get()
-
+        #Checks if both password and website are filled in
         if not website or not password:
             messagebox.showwarning("Error", "Both fields are required!")
-
+        #Saves the new password to the has map and then saves it to the passwords file
         hashMap = HashMap()
         hashMap.readSavedPasswords("passwords.txt")
         hashMap.setValue(website, password)
         hashMap.savePasswords("passwords.txt")
         messagebox.showinfo("Success", f"New website and Password saved")
-
-    # def saveInfo(self, website, password):
-    #     # This is a placeholder for the saving logic
-    #     print(f"Saving use case: {website}, Password: {password}")
-
 
 if __name__ == "__main__":
     root = tk.Tk()

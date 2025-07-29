@@ -26,31 +26,38 @@ class UserCreatorGUI:
                                                                                   pady=20)
         tk.Button(self.root, text="Login", command=self.login).grid(row=3, column=0, columnspan=2, pady=0)
         
-    #The logic for the main function here
+    #Used for the create user button
+    #Uses the create user fn in user to make a new folder, salt file, and encryption key
     def createUser(self):
         username = self.usernameEntry.get().strip()
         password = self.passwordEntry.get().strip()
-
+        #if username or password is left blank
         if not username or not password:
             messagebox.showerror("Error", "Both fields are required!")
             return
+        #If both fields are entered then It creates a new user
         else:
             User.createUser(username=username, password=password)
             messagebox.showinfo("Success", f"User '{username}' created successfully!")
             self.openMainWindow()
 
+    #Used for the login button
+    #Uses the decryption fn from cryption to login a user if they have the correct password
     def login(self):
         username = self.usernameEntry.get().strip()
         password = self.passwordEntry.get().strip()
 
+        #if username or password is left blank
         if not username or not password:
             messagebox.showerror("Error", "Both fields are required!")
             return
+        #checks if the user exists
         elif not os.path.isdir(username):
             print()
             print(os.getcwd())
             messagebox.showerror("Error", "Invalid Username!")
             return
+        #Decryption with correct password
         else:
             os.chdir(username)
             key = cryption.genarateKey(password, loadSalt=True)
@@ -62,16 +69,7 @@ class UserCreatorGUI:
                 return()
             self.openMainWindow()
         
-
-        #This simulates saving the user (replace this and the saveUser definition with the save to file logic
-        #when it gets done)
-        # self.saveUser(username, password)
-        # messagebox.showinfo("Success", f"User '{username}' created successfully!")
-        self.openMainWindow()
-
-    # def saveUser(self, username, password):
-    #     #This is a placeholder for the saving user logic
-    #     print(f"Saving user: {username}, Password: {password}")
+        # self.openMainWindow()
 
     # This closes the login window and opens the main window, which will be integrated more in the future
     def openMainWindow(self):

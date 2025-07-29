@@ -1,6 +1,4 @@
-import cryptography
 from cryptography.fernet import Fernet
-import cryptography.fernet
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
 import secrets
