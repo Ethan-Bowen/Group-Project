@@ -4,23 +4,27 @@ from tkinter import *
 from passwordBank import HashMap
 
 listbox = None
+
+
 def viewPasswords():
     viewWindow = tk.Toplevel()
     viewWindow.title("View Passwords")
-    viewWindow.geometry("300x200")
+    viewWindow.geometry("500x300")
 
-    #Widgets
-    listbox = tk.Listbox(viewWindow, width=200, height=100)
+    # Widgets
+    listbox = tk.Listbox(viewWindow)
     listbox.pack(pady=10, padx=10, expand=False)
-    
-    #Displays the contents of the hash map on the list box
+    #This currently destroys the window as placeholder logic.
+    button = tk.Button(viewWindow, text="Remove Password", command=viewWindow.destroy)
+    button.pack(pady=10)
+
+    # Displays the contents of the hash map on the list box
     hashMap = HashMap()
     try:
         hashMap.readSavedPasswords("passwords.txt")
     except FileNotFoundError:
         messagebox.showerror("Password File not Found", "Password File Missing!")
-        return()
+        return ()
     for key in hashMap.map:
         listbox.insert(tk.END, key + "    " + hashMap.getValue(key))
-    return()
-
+    return ()
