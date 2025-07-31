@@ -1,0 +1,25 @@
+Password Manager Project Group D
+
+Table of Contents
+Disclaimer
+About
+Installation
+Usage
+
+Disclaimer
+
+THIS PROJECT IS A STUDENT MADE PROJECT NOT DESIGNED FOR PROPER USAGE. NOT ALL ASPECTS OF THIS CODE ARE SAFE FOR COMMERCIAL USE
+
+About
+
+This project is a small local password manager that uses python's encryption library. This project was developed to make managing passwords user friendly and safe.
+
+Installation
+(THIS WILL NEED CHANGED IF YOU CHANGE THE INSTALLATION PROCESS)
+
+First navigate to the GitHub page for the project (if you're reading this then you're already there!) Next click on the arrow on the green code button. Select Download zip to download the project as a zip file. Make sure you know where the zip file is downloading to. Next go to your file manager and find the zip folder. Right click it and select extract all. Once the file is extracted you will be able to open the folder for the project.  
+
+Usage
+(THIS WILL NEED CHANGED IF YOU REARRANGE THE FILE STRUCTURE)
+
+Navigate to GROUP-PROJECT/src/dist/passwordManager after installing the program and run the passwordManager.exe file inside. For quick access you may want to create a desktop shortcut to the exe file. There are four windows within the program. The login window, the main menu, the add password window, and the password manager window. The login window is where it is possible to create new users and login if an account is already created. The main menu allows navigation to the other windows. The add password window allows you to add new passwords to the password manager. The Password manager allows you to view, copy, and remove passwords saved in the password manager. To copy a password click the desired password and hit ctrl+c. To remove a password click on it and hit the remove button.
