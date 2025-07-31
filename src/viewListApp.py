@@ -13,7 +13,7 @@ class viewPasswords:
 
         #Listbox
         self.listbox = tk.Listbox(self.viewWindow)
-        self.listbox.pack(pady=10, padx=10, expand=False)
+        self.listbox.pack(pady=10, padx=10, expand=True, fill='x')
         #Button
         button = tk.Button(self.viewWindow, text="Remove Password", command=self.remove)
         button.pack(pady=10)
